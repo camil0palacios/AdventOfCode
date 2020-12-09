@@ -36,6 +36,7 @@ int main() {
         num[n] = c == '-' ? -x : x;
         n++;
     }
+    // part 1
     int acc = 0;
     for(int i = 0; i < n && !vis[i];) {
         vis[i] = 1;
@@ -43,7 +44,6 @@ int main() {
         else if(ins[i] == "acc") acc += num[i], i++;
         else if(ins[i] == "jmp") i += num[i];
     }
-    // part 1
     cout << acc << endl;
     // part 2
     queue<state> q;
@@ -54,20 +54,15 @@ int main() {
         int ch = q.front().ch;
         int ac = q.front().acc;
         q.pop();
-
         if(u == n-1) { acc = ac; break; }
-
         int v1, v2 = -1, _acc = ac;
-    
         if(ins[u] == "nop") v1 = u + 1;
         if(ins[u] == "acc") v1 = u + 1, _acc += num[u]; 
         if(ins[u] == "jmp") v1 = u + num[u];
-        
         if(!vis2[v1][ch]) {
             vis2[v1][ch] = 1;
             q.emplace(v1, ch, _acc);
-        } 
-
+        }
         if(!ch) {
             if(ins[u] == "nop") v2 = u + num[u];
             if(ins[u] == "jmp") v2 = u + 1;
