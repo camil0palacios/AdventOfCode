@@ -26,6 +26,17 @@ bool check(int x, int y, int n, int m) {
     return x >= 0 && x < n && y >= 0 && y < m;
 }
 
+int count_empty(vs & a) {
+    int n = sz(a), m = sz(a[0]);
+    int ans = 0;
+    fori(i,0,n) {
+        fori(j,0,m) {
+            ans += a[i][j] == '#';
+        }
+    }
+    return ans;
+}
+
 int solve(vs a) {
     int n = sz(a), m = sz(a[0]);
     vs b;
@@ -43,13 +54,7 @@ int solve(vs a) {
             }
         }
     } while(a != b);
-    int ans = 0;
-    fori(i,0,n) {
-        fori(j,0,m) {
-            ans += a[i][j] == '#';
-        }
-    }
-    return ans;
+    return count_empty(a);
 }
 
 bool count(int x, int y, int dirx, int diry, vs & a) {
@@ -80,13 +85,7 @@ int solve2(vs a) {
             }
         }
     } while(a != b);
-    int ans = 0;
-    fori(i,0,n) {
-        fori(j,0,m) {
-            ans += a[i][j] == '#';
-        }
-    }
-    return ans;
+    return count_empty(a);
 }
 
 int main() {
