@@ -39,7 +39,6 @@ int solve(int n) {
     fori(i,1,n) {
         dif[a[i] - a[i-1]]++;
     }
-    // cout << dif[1] << ' ' << dif[3] << endl;
     return dif[1] * dif[3];
 }
 
