@@ -29,7 +29,7 @@ void solve(vi & a) {
         if(i != n) lst[a[i-1]] = i;
     }
     for(int i = sz(a) + 1; i <= Mxn; i++) {
-        if(!lst[turn[i-1]]) turn[i] = 0, lst[turn[i-1]] = i-1;
+        if(!lst[turn[i-1]]) turn[i] = 0;
         else turn[i] = i - 1 - lst[turn[i-1]];
         lst[turn[i-1]] = i-1;
     }
